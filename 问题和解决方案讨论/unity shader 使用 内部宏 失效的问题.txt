@@ -1,2 +1,4 @@
 ﻿在使用bundle读取的情况下，shader如果使用unity的内部宏，比如lightmap_off,这些shader如果作为外部依赖的包，则这些内部宏的判断有可能会出现错误
 在unity5.3.5中，应该是unity的bug
+
+发现了问题了，在graphicSetting中，将shader strip调整为manual类型的，然后勾选所需要的设置，因为shader 在单独打bundle的时候，会根据当前场景是否使用lightmap和fog做优化，过滤掉不需要的shader代码（坑），所以设置为手动就好
